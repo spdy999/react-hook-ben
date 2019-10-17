@@ -5,9 +5,12 @@ const App = () => {
   const [count, setCount] = useState(0);
 
   // if count or setCount (dependencies) are changed useCallback() will recreate itself
-  const increment = useCallback(() => {
-    setCount(c => c + 1);
-  }, [setCount]);
+  const increment = useCallback(
+    n => {
+      setCount(c => c + n);
+    },
+    [setCount],
+  );
   return (
     <div>
       <Hello increment={increment} />
