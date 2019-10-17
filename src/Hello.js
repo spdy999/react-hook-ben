@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Hello = () => {
-  return <div>Hello</div>;
+export const Hello = ({ increment }) => {
+  return <button onClick={increment}>hello</button>;
 };
