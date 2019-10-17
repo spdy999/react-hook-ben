@@ -1,24 +1,17 @@
-import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useFetch } from './useFetch';
+import { useMesure } from './useMeasure';
 
 export const Hello = () => {
   const [count, setCount] = useState(() => JSON.parse(localStorage.getItem('count')));
   const { data } = useFetch(`http://numbersapi.com/${count}/trivia`);
 
   useEffect(() => {
-    if (count) {
-      localStorage.setItem('count', JSON.stringify(count));
-    } else {
-      localStorage.setItem('count', Math.floor(Math.random() * 100));
-    }
+    localStorage.setItem('count', Math.floor(Math.random() * 100));
   }, [count]);
 
-  const [rect, setRect] = useState({});
-
   const divRef = useRef();
-  useLayoutEffect(() => {
-    setRect(divRef.current.getBoundingClientRect());
-  }, [data]);
+  const rect = useMesure(divRef, [data]);
 
   return (
     <div>
