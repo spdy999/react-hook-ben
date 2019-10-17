@@ -4,9 +4,18 @@ import { Hello } from './Hello';
 
 const App = () => {
   const [values, handleChange] = useForm({ email: '', password: '', firstName: '' });
+
   const inputRef = useRef();
   const hello = useRef(() => console.log('hello  '));
+
   const [showHello, setShowHello] = useState(true);
+
+  // useLayoutEffect(() => {
+  //   console.log(inputRef.current.getBoundingClientRect());
+  //   // return () => {
+  //   //   cleanup;
+  //   // };
+  // }, []);
 
   return (
     <div>
