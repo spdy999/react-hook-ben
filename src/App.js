@@ -5,6 +5,7 @@ import { Hello } from './Hello';
 const App = () => {
   const [values, handleChange] = useForm({ email: '', password: '', firstName: '' });
   const inputRef = useRef();
+  const hello = useRef(() => console.log('hello  '));
   const [showHello, setShowHello] = useState(true);
 
   return (
@@ -17,8 +18,8 @@ const App = () => {
         <input type="password" name="password" value={values.password} onChange={handleChange} />
         <button
           onClick={() => {
-            console.log(inputRef);
             inputRef.current.focus();
+            hello.current();
           }}
         >
           focus
