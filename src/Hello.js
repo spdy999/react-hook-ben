@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { useCountRenders } from './useCountRenders';
 
-export const Hello = ({ increment }) => {
+// "memo" used to force component only re-render when increment changed
+export const Hello = memo(({ increment }) => {
+  useCountRenders();
   return <button onClick={increment}>hello</button>;
-};
+});
