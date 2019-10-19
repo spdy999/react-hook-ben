@@ -18,7 +18,7 @@ export const useFetch = url => {
       .then(x => x.text())
       .then(y => {
         if (isCurrent.current) {
-          setState({ data: y, loading: false });
+          setState({ data: JSON.parse(y), loading: false });
         }
       });
   }, [url]);
